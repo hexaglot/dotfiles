@@ -1,0 +1,73 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+syntax enable
+set background=dark
+set hidden
+set history=100
+filetype indent on
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set autoindent
+set hlsearch
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase
+set smartcase
+" if file changes outside of vim, reload
+set autoread
+set clipboard=unnamedplus "set vim to use system clipboard
+" fix slow O inserts
+set timeout timeoutlen=1000 ttimeoutlen=100
+" live feedback of substitutions
+set inccommand=nosplit
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'sheerun/vim-polyglot'
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
+
+Plug 'w0rp/ale'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'posva/vim-vue'
+
+" plugins are visible to vim after this call
+call plug#end()
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
+let mapleader = ' '
+"make . do again over visual selection
+vnoremap . :normal .<CR>
+noremap <leader>w :wq<ESC>
+inoremap jj  <esc>
+
+noremap <c-a> :Ag 
+nnoremap <left>   <c-w>>
+nnoremap <right>  <c-w><
+nnoremap <up>     <c-w>-
+nnoremap <down>   <c-w>+
+noremap <leader>j  <ESC><C-W>w
+noremap <leader>w  <ESC>:w<CR>
+noremap <leader>q  <ESC>:x<CR>
+noremap <C-T> :FZF <CR>
+" make indent grab the visual selection after indenting
+vnoremap > >gv
+vnoremap < <gv
