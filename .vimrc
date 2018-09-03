@@ -40,6 +40,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 "Plug 'autozimu/LanguageClient-neovim', {
     "\ 'branch': 'next',
     "\ 'do': 'bash install.sh',
@@ -71,3 +73,4 @@ noremap <C-T> :FZF <CR>
 " make indent grab the visual selection after indenting
 vnoremap > >gv
 vnoremap < <gv
+noremap <leader>hb i&nbsp;<ESC>
