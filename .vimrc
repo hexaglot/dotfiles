@@ -50,6 +50,7 @@ Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'posva/vim-vue'
+Plug 'vimwiki/vimwiki'
 
 " plugins are visible to vim after this call
 call plug#end()

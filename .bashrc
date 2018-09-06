@@ -113,8 +113,8 @@ if ! shopt -oq posix; then
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PS1='[r:`rvm-prompt v g s`][n:`node -v`]:\[\033[1;33m\] \w `[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s`[[ $(git status 2> /dev/null | head -n3 | tail -n1) != "nothing to commit, working tree clean" ]] && echo " ✘" || echo " ✔"`)\[\e[00m\]")\[\e[01;34m\]\[\e[31m\] >\[\e[00m\]'
+#export PATH="$PATH:$HOME/.rvm/bin"
+#export PS1='[r:`rvm-prompt v g s`][n:`node -v`]:\[\033[1;33m\] \w `[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s`[[ $(git status 2> /dev/null | head -n3 | tail -n1) != "nothing to commit, working tree clean" ]] && echo " ✘" || echo " ✔"`)\[\e[00m\]")\[\e[01;34m\]\[\e[31m\] >\[\e[00m\]'
 
 rvm_project_rvmrc=1
 
