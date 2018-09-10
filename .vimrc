@@ -16,6 +16,9 @@ set expandtab
 set smartindent
 set autoindent
 set hlsearch
+" for vim wiki
+filetype plugin on
+set nocompatible
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase
 set smartcase
@@ -42,6 +45,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+Plug 'justinmk/vim-sneak'
 "Plug 'autozimu/LanguageClient-neovim', {
     "\ 'branch': 'next',
     "\ 'do': 'bash install.sh',
@@ -54,12 +58,17 @@ Plug 'vimwiki/vimwiki'
 
 " plugins are visible to vim after this call
 call plug#end()
+
+" configure vim wiki to use notes dir and markdown format
+let g:vimwiki_list = [{'path': '~/notes/'}]
+let g:vimwiki_list = [{'path': '~/notes/', 'syntax': 'markdown', 'ext': '.md'}]
+
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 let mapleader = ' '
 "make . do again over visual selection
 vnoremap . :normal .<CR>
-noremap <leader>w :wq<ESC>
+"noremap <leader>w :wq<ESC>
 inoremap jj  <esc>
 
 noremap <c-a> :Ag 
@@ -68,10 +77,16 @@ nnoremap <right>  <c-w><
 nnoremap <up>     <c-w>-
 nnoremap <down>   <c-w>+
 noremap <leader>j  <ESC><C-W>w
-noremap <leader>w  <ESC>:w<CR>
-noremap <leader>q  <ESC>:x<CR>
+"noremap <leader>w  <ESC>:w<CR>
+"noremap <leader>q  <ESC>:x<CR>
 noremap <C-T> :FZF <CR>
 " make indent grab the visual selection after indenting
 vnoremap > >gv
 vnoremap < <gv
 noremap <leader>hb i&nbsp;<ESC>
+" select just-pasted text
+nnoremap gp `[v`]
+nnoremap <leader>pp "*p
+nnoremap <leader>pj o<ESC>"*p
+
+nnoremap <leader>pp "*p
