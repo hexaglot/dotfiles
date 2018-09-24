@@ -90,3 +90,6 @@ nnoremap <leader>pp "*p
 nnoremap <leader>pj o<ESC>"*p
 
 nnoremap <leader>pp "*p
+
+" new command :R to run command and put results in a scratch buffer
+:command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
