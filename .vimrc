@@ -4,8 +4,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-syntax enable
-set background=dark
+syntax enable set background=dark
 set hidden
 set history=100
 filetype indent on
@@ -90,3 +89,6 @@ nnoremap <leader>pp "*p
 nnoremap <leader>pj o<ESC>"*p
 
 nnoremap <leader>pp "*p
+
+" In visual mode, pipe selection through markdown and replace in text
+vnoremap <leader>d c<C-R>=system('markdown', getreg('"'))[:-2]<CR> 
