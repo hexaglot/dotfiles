@@ -92,3 +92,6 @@ nnoremap <leader>pp "*p
 
 " In visual mode, pipe selection through markdown and replace in text
 vnoremap <leader>d c<C-R>=system('markdown', getreg('"'))[:-2]<CR> 
+
+" new command :R to run command and put results in a scratch buffer
+:command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
