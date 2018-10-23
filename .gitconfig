@@ -47,6 +47,8 @@
     b = "!. ~/.githelpers && pretty_git_branch"
     bs = "!. ~/.githelpers && pretty_git_branch_sorted"
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    #shortcut for showing status pf repo
+    ls = !git lg --all -15
 
 # https://gist.github.com/robmiller/6018582
     # Get the current branch name (not so useful in itself, but used in other aliases)
@@ -86,6 +88,14 @@
     # See also: https://gist.github.com/robmiller/5133264
     delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
+    #git commitsAtDate 2017-08-18
+    commitsAtDate = "!f() { git log --pretty='format:%C(yellow)%h %G? %ad%Cred%d %Creset%s%C(cyan) [%cn]' --decorate --after=\"$1 0:00\" --before=\"$1 23:59\" --author \"`git config user.name`\"; }; f"
+
+    #git commitsAtDate 2017-08-18
+    synWithTimes= "!f() { git log --pretty='%ad %s' --decorate --after=\"$1 0:00\" --before=\"$1 23:59\" --date=format:'%H:%M:%S' --author \"`git config user.name`\"; }; f"
+
+    #git commitsAtDate 2017-08-18
+    syn = "!f() { git log --pretty='%s' --decorate --after=\"$1 0:00\" --before=\"$1 23:59\" --author \"`git config user.name`\"; }; f"
 [merge]
 	tool = fugitive
 [mergetool "fugitive"]
