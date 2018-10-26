@@ -130,8 +130,10 @@ alias server="ruby ~/server.rb"
 alias prod='ssh $(ruby ~/server.rb)'     
 alias stag='ssh $(ruby ~/server.rb staging)'
 
-export VISUAL=vim
 PATH=~/bin:$PATH
+
+export FCEDIT=nvim
+export VISUAL=nvim
 
 export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
