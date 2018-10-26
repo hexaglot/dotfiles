@@ -1,0 +1,15 @@
+#!/bin/bash
+DEV_PATH="~/current/john_lewis/jlp-consultation"
+SESSION="jlp"
+tmux -2 new-session -d -s $SESSION
+
+# run dev server
+tmux new-window -n "rails"
+tmux send-keys "cd $DEV_PATH; rails s -b 0.0.0.0 -p 3088" C-m
+
+# Nvim
+tmux new-window -n "vim"
+tmux send-keys "cd $DEV_PATH; nvim" C-m
+
+# Reattach
+tmux -2 attach-session -t $SESSION

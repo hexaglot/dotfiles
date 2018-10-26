@@ -1,0 +1,3 @@
+#!/bin/bash
+notes password dLewwjNcbfAVUuJVddUW
+(cd notes ; git pull )
