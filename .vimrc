@@ -2,8 +2,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
+endif 
 syntax enable set background=dark
 set hidden
 set history=100
@@ -50,7 +49,7 @@ Plug 'justinmk/vim-sneak'
     "\ 'do': 'bash install.sh',
     "\ }
 
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'posva/vim-vue'
 Plug 'vimwiki/vimwiki'
@@ -101,3 +100,31 @@ vnoremap <leader>d c<C-R>=system('markdown', getreg('"'))[:-2]<CR><ESC>
 augroup filetypedetect
     au BufRead,BufNewFile *.nunjucks setfiletype html
 augroup END
+
+" more sensible colors in diff mode
+hi DiffAdd guifg=NONE ctermfg=NONE guibg=#464632 ctermbg=238 gui=NONE cterm=NONE
+hi DiffChange guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=239 gui=NONE cterm=NONE
+hi DiffDelete guifg=#f43753 ctermfg=203 guibg=#79313c ctermbg=237 gui=NONE cterm=NONE
+hi DiffText guifg=NONE ctermfg=NONE guibg=NONE ctermbg=NONE gui=reverse cterm=reverse
+
+" Simple template system use %%% as placeholder in templates
+" <leader>t to bring up templates menu
+" User ;; to move to next placeholder when using
+" Put templates in .templates dir
+" only does whole files at the moment - could do snippets too?
+let g:pathToTemplates='~/.templates/'
+
+function! GoSink(file)
+  execute ':0r '.g:pathToTemplates.a:file
+  normal ;;
+endfunction
+
+command! Go call fzf#run({
+      \ 'source': 'ls '.g:pathToTemplates,
+      \ 'sink':    function('GoSink'),
+      \ 'options': '',
+      \ 'down' : '20%'})
+
+imap <buffer> ;; <C-O>/%%%<CR><C-O>c3l
+nmap <buffer> ;; /%%%<CR>c3l
+nnoremap <leader>t :Go<CR>
