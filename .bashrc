@@ -142,3 +142,7 @@ export FZF_DEFAULT_COMMAND='
 
 #https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias less="less -FX"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
