@@ -117,7 +117,14 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PS1='[r:`rvm-prompt v g s`][n:`node -v`]:\[\033[1;33m\] \w `[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s`[[ $(git status 2> /dev/null | head -n3 | tail -n1) != "nothing to commit, working tree clean" ]] && echo " ✘" || echo " ✔"`)\[\e[00m\]")\[\e[01;34m\]\[\e[31m\] >\[\e[00m\]'
+
+# Use a promp with rvm, node, git - if they exist
+if hash rvm 2>/dev/null; then
+  export PS1='[r:`rvm-prompt v g s`][n:`node -v`]:\[\033[1;33m\] \w `[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s`[[ $(git status 2> /dev/null | head -n3 | tail -n1) != "nothing to commit, working tree clean" ]] && echo " ✘" || echo " ✔"`)\[\e[00m\]")\[\e[01;34m\]\[\e[31m\] >\[\e[00m\]'
+else
+  . ~/.git-prompt.sh
+  export PS1=':\[\033[1;33m\] \w `[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s`[[ $(git status 2> /dev/null | head -n3 | tail -n1) != "nothing to commit, working tree clean" ]] && echo " ✘" || echo " ✔"`)\[\e[00m\]")\[\e[01;34m\]\[\e[31m\] >\[\e[00m\]'
+fi
 
 rvm_project_rvmrc=1
 
@@ -141,7 +148,7 @@ export FZF_DEFAULT_COMMAND='
       sed s/^..//) 2> /dev/null'
 
 #https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfg="$(which git) --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 alias less="less -FX"
 alias wiki="nvim -c 'VimwikiIndex'"
