@@ -144,5 +144,9 @@ export FZF_DEFAULT_COMMAND='
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias less="less -FX"
+alias wiki="nvim -c 'VimwikiIndex'"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Add python pip dir to path
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
