@@ -27,6 +27,9 @@ set clipboard=unnamedplus "set vim to use system clipboard
 set timeout timeoutlen=1000 ttimeoutlen=100
 " live feedback of substitutions
 set inccommand=nosplit
+" put all ~ files here
+set swapfile
+set dir=~/tmp
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
