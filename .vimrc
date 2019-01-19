@@ -131,3 +131,13 @@ command! Go call fzf#run({
 imap <buffer> ;; <C-O>/%%%<CR><C-O>c3l
 nmap <buffer> ;; /%%%<CR>c3l
 nnoremap <leader>t :Go<CR>
+
+" Jump to last position when reopening a file, uses .vimino
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+" turn hybrid line numbers on
+:set number relativenumber
+
