@@ -52,7 +52,7 @@ Plug 'justinmk/vim-sneak'
     "\ 'do': 'bash install.sh',
     "\ }
 
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'posva/vim-vue'
 Plug 'vimwiki/vimwiki'
